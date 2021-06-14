@@ -91,9 +91,9 @@ set-face global DiagnosticWarning "%opt{snazzy_cyan},default"
 set-face global Reference "default,%opt{snazzy_ui_9}"
 §
 
-hook global ModuleLoaded powerline %{ require-module powerline_base16_gruvbox }
+hook global ModuleLoaded powerline %{ require-module powerline_snazzy }
 
-provide-module powerline_base16_gruvbox %§
+provide-module powerline_snazzy %§
 set-option -add global powerline_themes "snazzy"
 
 define-command -hidden powerline-theme-snazzy %{
