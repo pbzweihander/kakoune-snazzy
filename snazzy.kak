@@ -83,19 +83,20 @@ add-highlighter global/ line '%val{cursor_line}' "default,%opt{snazzy_ui_9}"
 
 # columns
 add-highlighter global/ column 79 "default,%opt{snazzy_ui_9}"
-# add-highlighter global/ column 80 "default,%opt{snazzy_ui_9}"
-# add-highlighter global/ column 81 "default,%opt{snazzy_ui_9}"
 add-highlighter global/ column 119 "default,%opt{snazzy_ui_9}"
-# add-highlighter global/ column 120 "default,%opt{snazzy_ui_9}"
-# add-highlighter global/ column 121 "default,%opt{snazzy_ui_9}"
 
-hook global WinSetOption .* %{
-  set-face global DiagnosticError error
-  set-face global DiagnosticWarning "%opt{snazzy_cyan},default"
-  set-face global Reference "default,%opt{snazzy_ui_9}"
-}
+provide-module kak_lsp_theme_snazzy %§
+set-face global DiagnosticError error
+set-face global DiagnosticWarning "%opt{snazzy_cyan},default"
+set-face global Reference "default,%opt{snazzy_ui_9}"
+§
 
-hook global ModuleLoaded powerline %{
+hook global ModuleLoaded powerline %{ require-module powerline_base16_gruvbox }
+
+provide-module powerline_base16_gruvbox %§
+set-option -add global powerline_themes "snazzy"
+
+define-command -hidden powerline-theme-snazzy %{
   set-option global powerline_color07 "%opt{snazzy_ui_9}"        # fg: mode-info
   set-option global powerline_color08 "%opt{snazzy_blue}"        # base background
   set-option global powerline_color00 "%opt{snazzy_ui_2}"        # fg: bufname
@@ -109,6 +110,7 @@ hook global ModuleLoaded powerline %{
   set-option global powerline_color06 "%opt{snazzy_ui_9}"        # fg: line-column, lsp
   set-option global powerline_color09 "%opt{snazzy_line_base1}"  # bg: line-column, lsp
 }
+§
 
 hook global ModuleLoaded search-highlighter %{
   set-face global Search "%opt{snazzy_black},%opt{snazzy_yellow}+f"
